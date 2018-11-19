@@ -143,6 +143,8 @@
     <ClCompile Include="AlgorithmStudy_Stack_main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CStackListBased.h" />
+    <ClInclude Include="CStackArray.h" />
     <ClInclude Include="MyStack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
