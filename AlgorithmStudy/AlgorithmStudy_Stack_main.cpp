@@ -45,6 +45,8 @@ int main()
 {
 	using namespace std;
 	MyStack<string, 5> my_stack;
+	cout << "box numbers are assigned by first-come." << endl;
+	cout << "initial data" << endl;
 	my_stack.push("[ 1.box ]");
 	my_stack.push("[ 2.box ]");
 	my_stack.push("[ 3.box ]");
@@ -58,7 +60,7 @@ int main()
 	cout << endl;
 	
 	string popData = my_stack.pop();
-	cout << "pop(), take top data away  "<< popData << endl << endl;
+	cout << "pop(), take top data away (Last In First Out) "<< popData << endl << endl;
 
 	cout << "stack count : " << my_stack.getSize() << endl;
 	my_stack.print();
@@ -67,7 +69,7 @@ int main()
 
 
 	my_stack.push("[ 5.box ]");
-	cout << "push() [ 5.box ]" << endl << endl;
+	cout << "push(), add data to top [ 5.box ]" << endl << endl;
 
 	cout << "stack count : " << my_stack.getSize() << endl;
 	my_stack.print();
@@ -76,7 +78,7 @@ int main()
 
 
 	my_stack.push("[ 6.box ]");
-	cout << "push() [ 6.box ]" << endl << endl;
+	cout << "push(), add data to top [ 6.box ]" << endl << endl;
 
 	cout << "stack count : " << my_stack.getSize() << endl;
 	my_stack.print();
