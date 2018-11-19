@@ -39,19 +39,70 @@ print all data
 
 */
 #include "MyStack.h"
-
+#include <string>
 
 int main()
 {
 	using namespace std;
-	MyStack<int, 5> my_stack;
-	my_stack.push(1);
-	my_stack.push(2);
-	/*cout << my_stack[0] << endl;
-	cout << my_stack[1] << endl;
-	*/
+	MyStack<string, 5> my_stack;
+	my_stack.push("[ 1.box ]");
+	my_stack.push("[ 2.box ]");
+	my_stack.push("[ 3.box ]");
+	my_stack.push("[ 4.box ]");
 	my_stack.print();
-	cout << my_stack.pop() << endl; 
+	cout << endl;
+	cout << endl;
+
+	cout << "peek() topdata : ";
+	my_stack.peek();
+	cout << endl;
+	
+	string popData = my_stack.pop();
+	cout << "pop(), take top data away  "<< popData << endl << endl;
+
+	cout << "stack count : " << my_stack.getSize() << endl;
+	my_stack.print();
+	cout << endl;
+	cout << endl;
+
+
+	my_stack.push("[ 5.box ]");
+	cout << "push() [ 5.box ]" << endl << endl;
+
+	cout << "stack count : " << my_stack.getSize() << endl;
+	my_stack.print();
+	cout << endl;
+	cout << endl;
+
+
+	my_stack.push("[ 6.box ]");
+	cout << "push() [ 6.box ]" << endl << endl;
+
+	cout << "stack count : " << my_stack.getSize() << endl;
+	my_stack.print();
+	cout << endl;
+	cout << endl;
+
+
+	my_stack.del();
+	cout << "del(), delete top data" << endl << endl;
+
+	cout << "stack count : " << my_stack.getSize() << endl;
+	my_stack.print();
+	cout << endl;
+	cout << endl;
+
+
+	my_stack.del();
+	my_stack.del();
+	my_stack.del();
+	my_stack.del();
+	cout << "after delete all" << endl;
+	cout << "stack count : " << my_stack.getSize() << endl;
+	my_stack.print();
+	cout << endl;
+	cout << endl;
+
 	return 0;
 }
 
