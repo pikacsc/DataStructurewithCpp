@@ -62,7 +62,7 @@ public:
 	}
 
 	//check how many datas in stack
-	unsigned int getSize()
+	unsigned int size()
 	{
 		return nextIndex;
 	}
