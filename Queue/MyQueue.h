@@ -21,7 +21,7 @@ push
 Inserts a new element at the end of the queue(back of the queue),
 
 pop
-Removes the "oldest" element then next first come element will be "oldest"
+take the "oldest" element then next first come element will be "oldest"
 
 
 */
@@ -87,9 +87,10 @@ public:
 		m_uiNextElementIndex--;
 	}
 
-	//Removes the "oldest" element then next first come element will be "oldest"
-	void pop()
+	//take the "oldest" element then next first come element will be "oldest"
+	T pop()
 	{
+		T returnData = m_tDataArr[m_uiFrontIndex];
 		if (size() == 1) // in case, only one data
 		{
 			m_uiNextElementIndex = m_uiFrontIndex;
@@ -103,6 +104,7 @@ public:
 			}
 		}
 		m_uiNextElementIndex++;
+		return returnData;
 	}
 
 };
