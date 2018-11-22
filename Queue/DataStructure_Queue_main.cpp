@@ -25,15 +25,66 @@ Removes the "oldest" element then next first come element will be "oldest"
 
 
 */
-
+#include <queue>
 #include <iostream>
 #include "MyQueue.h"
+#include "CircleQueue.h"
 #include <string>
 using namespace std;
 
 int main()
 {
-	MyQueue<string, 10> queue;
+	//Demo code for circle queue
+	{
+		PROGRAMIZ::CircleQueue<string, 5> q;
+		q.enQueue("Apple");
+		q.enQueue("Banana");
+		q.enQueue("Cherry");
+		q.enQueue("Grape");
+		q.enQueue("Melon");
+		q.display();
+	
+
+		cout << "Delete front element " << q.deQueueFront() << endl;
+		q.display();
+		cout << endl;
+
+		cout << "Delete front element " << q.deQueueFront() << endl;
+		q.display();
+		cout << endl;
+
+		cout << "Delete front element " << q.deQueueFront() << endl;
+		q.display();
+		cout << endl;
+
+		q.enQueue("Apple");
+		q.display();
+		cout << endl;
+
+		q.enQueue("Banana");
+		q.display();
+		cout << endl;
+
+		q.enQueue("Cherry");
+		q.display();
+		cout << endl;
+	
+		cout << "Delete front element " << q.deQueueFront() << endl;
+		q.display();
+		cout << endl;
+
+		cout << "Delete front element " << q.deQueueFront() << endl;
+		q.display();
+		cout << endl;
+
+
+		cout << "Delete rear element " << q.deQueueRear() << endl;
+		q.display();
+		cout << endl;
+	}
+
+
+	/*MyQueue<string, 6> queue;
 	queue.push("[ 1.box ]");
 	queue.push("[ 2.box ]");
 	queue.push("[ 3.box ]");
@@ -44,11 +95,49 @@ int main()
 	cout << "front(oldest one) : " << queue.front() << endl;
 	cout << "back(newest one)  : "<< queue.back() << endl;
 	cout << endl;
+	cout << "pop(), " << queue.pop() << endl;
+	cout << endl;
+	cout << "data count : " << queue.size() << endl;
+	cout << "front(oldest one) : " << queue.front() << endl;
+	cout << "back(newest one)  : " << queue.back() << endl;
+	cout << endl;
+	cout << "pop(), " << queue.pop() << endl;
+	cout << endl;
+	cout << "data count : " << queue.size() << endl;
+	cout << "front(oldest one) : " << queue.front() << endl;
+	cout << "back(newest one)  : " << queue.back() << endl;
+	cout << endl;
+	cout << "pop(), " << queue.pop() << endl;
+	cout << endl;
+	cout << "data count : " << queue.size() << endl;
+	cout << "front(oldest one) : " << queue.front() << endl;
+	cout << "back(newest one)  : " << queue.back() << endl;
 	cout << endl;
 	cout << endl;
 
+	queue.push("[ 1.box ]");
+	cout << "push(), [ 1.box ] "<< endl;
+	cout << endl;
+	cout << "data count : " << queue.size() << endl;
+	cout << "front(oldest one) : " << queue.front() << endl;
+	cout << "back(newest one)  : " << queue.back() << endl;
+	cout << endl;
+	queue.push("[ 2.box ]");
+	cout << "push(), [ 2.box ] " << endl;
+	cout << endl;
+	cout << "data count : " << queue.size() << endl;
+	cout << "front(oldest one) : " << queue.front() << endl;
+	cout << "back(newest one)  : " << queue.back() << endl;
+	cout << endl;
+	queue.push("[ 3.box ]");
+	cout << "push(), [ 3.box ] " << endl;
+	cout << endl;
+	cout << "data count : " << queue.size() << endl;
+	cout << "front(oldest one) : " << queue.front() << endl;
+	cout << "back(newest one)  : " << queue.back() << endl;
+	cout << endl;*/
 
-
+	/*old demo code
 	queue.pop();
 	cout << "pop(), remove oldest(most first) one" << endl;
 	cout << "data count : " << queue.size() << endl;
@@ -119,7 +208,7 @@ int main()
 	cout << "back(newest one)  : " << queue.back() << endl;
 	cout << endl;
 	cout << endl;
-	cout << endl;
+	cout << endl;*/
 
 
 	return 0;
