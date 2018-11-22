@@ -142,6 +142,7 @@
     <ClCompile Include="DataStructure_Queue_main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CircleQueue.h" />
     <ClInclude Include="MyQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
