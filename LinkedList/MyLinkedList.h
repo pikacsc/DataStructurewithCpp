@@ -6,7 +6,7 @@ class Node
 {
 private:
 	T m_Data;
-	Node *m_pNextNode;
+	Node<T> *m_pNextNode;
 
 public:
 	Node()
@@ -17,7 +17,7 @@ public:
 
 	~Node()
 	{
-
+		std::cout << "Node : " << this << " deleted" << std::endl;
 	}
 
 	T GetData()
@@ -30,9 +30,9 @@ public:
 		m_Data = data;
 	}
 
-	Node GetNextNode()
+	Node<T>* GetNextNode()
 	{
-		return *m_pNextNode;
+		return m_pNextNode;
 	}
 
 	void SetNextNode(Node* node)
@@ -59,11 +59,7 @@ public:
 
 	~MyLinkedList()
 	{
-		delete m_pHead;
-		m_pHead = nullptr;
-
-		delete m_pTail;
-		m_pTail = nullptr;
+		clear();
 	}
 
 	void push_back(const T& data)
@@ -100,8 +96,12 @@ public:
 			while (currentNode != nullptr)
 			{
 				using namespace std;
-				cout << currentNode->GetData() << endl;
-				*currentNode = currentNode->GetNextNode();
+				cout << "currentNode : " << currentNode << endl;
+				cout << "data : " << currentNode->GetData() << endl;
+				cout << "nextNode : " << currentNode->GetNextNode() << endl;
+				cout << endl;
+				cout << endl;
+				currentNode = currentNode->GetNextNode();
 			}
 		}
 	}
@@ -117,25 +117,43 @@ public:
 	}
 
 
-	void clear()//in progress...
+	void clear()
 	{
+		using namespace std;
 		if (empty())
-			assert(false);
-		Node<T> *pCurrentNode = m_pHead;
-		Node<T> *pNextNode = &(m_pHead->GetNextNode());
-		while (!empty())
+			cout << "no data left" << endl;
+		else
 		{
-		*pNextNode = pCurrentNode->GetNextNode();
-			if (pNextNode == nullptr)
+			cout << "delete process begin..." << endl;
+			Node<T> *pCurrentNode = m_pHead; //temp Node<T> *
+			while (pCurrentNode != m_pTail)
 			{
+				cout << "delete currentNode : " << pCurrentNode << endl;
+				cout << "data : " << pCurrentNode->GetData() << endl;
+				
+				//main logic to delete all
+				Node<T> *pNextNode = pCurrentNode->GetNextNode();
 				delete pCurrentNode;
-				m_uiSize--;
-				break;
+				pCurrentNode = pNextNode;
+				
+				
+				cout << "list size : " << --m_uiSize << endl;
+				cout << "change currentNode to next node " << pCurrentNode << endl;
+				cout << endl;
+				cout << endl;
+				if (pCurrentNode == m_pTail)//when last one
+				{
+					cout << "delete tail Node : " << pCurrentNode << endl;
+					cout << "data : " << pCurrentNode->GetData() << endl;
+					delete pCurrentNode;
+					cout << "list size : " << --m_uiSize << endl;
+					pCurrentNode = nullptr;
+					break;
+				}
 			}
-		delete pCurrentNode;	
-		m_uiSize--;
-		pCurrentNode = pNextNode;
+			m_uiSize = 0;
 		}
+		
 	}
 
 };
