@@ -22,15 +22,15 @@ int main()
 	list.push_back("Grape");
 
 
-	//list.display_nodeView();
-	list.display_dataTable();
+	list.display_nodeView();
+	//list.display_dataTable();
 	cout << endl;
 	cout << endl;
 	list.del(3);
 	cout << endl;
 	cout << endl;
-	//list.display_nodeView();
-	list.display_dataTable();
+	list.display_nodeView();
+	//list.display_dataTable();
 	
 	
 	return 0;

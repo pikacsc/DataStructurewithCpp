@@ -8,12 +8,11 @@ namespace SingleLinked
 	{
 	private:
 		T m_Data;
-		unsigned int m_uiIndex;
 		Node<T> *m_pNextNode;
 
 	public:
 		Node()
-			:m_pNextNode(nullptr), m_uiIndex(NULL)
+			:m_pNextNode(nullptr)
 		{
 
 		}
@@ -44,15 +43,7 @@ namespace SingleLinked
 		}
 
 
-		unsigned int GetNodeIndex()
-		{
-			return m_uiIndex;
-		}
-
-		void SetNodeIndex(const unsigned int& new_uiIndex)
-		{
-			m_uiIndex = new_uiIndex;
-		}
+		
 
 
 	};
@@ -81,7 +72,6 @@ namespace SingleLinked
 			{
 				Node<T> *newNode = new Node<T>;
 				newNode->SetData(data);
-				newNode->SetNodeIndex(m_uiSize + 1);
 				m_pHead = m_pTail = newNode;
 				m_uiSize++;
 			}
@@ -90,7 +80,7 @@ namespace SingleLinked
 				// create new node
 				Node<T> *newNode = new Node<T>;
 				newNode->SetData(data);
-				newNode->SetNodeIndex(m_uiSize + 1);
+			
 				//set front node's nextnode  
 				m_pTail->SetNextNode(newNode);
 
@@ -107,11 +97,12 @@ namespace SingleLinked
 			else
 			{
 				Node<T> *currentNode = m_pHead;
+				unsigned int count = 1;
 				while (currentNode != nullptr)
 				{
 					using namespace std;
 					cout << "currentNode : " << currentNode << endl;
-					cout << "index : "<< currentNode->GetNodeIndex() << "\t|\tdata : " << currentNode->GetData() << endl;
+					cout << "index : "<< count++ << "\t|\tdata : " << currentNode->GetData() << endl;
 					cout << "nextNode : " << currentNode->GetNextNode() << endl;
 					cout << endl;
 					cout << endl;
@@ -130,14 +121,17 @@ namespace SingleLinked
 				Node<T> *currentNode = m_pHead;
 				cout << "index\t|\tdata" << endl;
 				cout << "===============================" << endl;
+				unsigned int count = 1;
 				while (currentNode != nullptr)
 				{
-					cout << currentNode->GetNodeIndex() << "\t|\t" << currentNode->GetData() << endl;
+					cout << count++ << "\t|\t" << currentNode->GetData() << endl;
 					cout << "===============================" << endl;
 					currentNode = currentNode->GetNextNode();
 				}
+
 			}
 		}
+
 
 		//take tail data
 		T pop()
@@ -157,42 +151,45 @@ namespace SingleLinked
 
 			delete pCurrentNode;
 			pCurrentNode = nullptr;
-			pNextNode->SetNodeIndex(uiIndex);
-			pPrevNode->SetNextNode(pNextNode);
-			pCurrentNode = pNextNode;
-			unsigned int count = 0;
 			
-			//index renewal
-			while (pCurrentNode != nullptr)
+			if (pPrevNode == nullptr) // if deleted node was Head
 			{
-				pNextNode = pCurrentNode->GetNextNode();
-				pCurrentNode->SetNodeIndex(uiIndex + count++);
-				pCurrentNode = pNextNode;
+				m_pHead = pNextNode;
+				pNextNode = pNextNode->GetNextNode();
+				m_pHead->SetNextNode(pNextNode);
 			}
+			if (pNextNode == nullptr) // if deleted node was Tail
+			{
+				m_pTail = pPrevNode;
+				m_pTail->SetNextNode(nullptr);
+			}
+			if(pPrevNode != nullptr && pNextNode != nullptr )
+				pPrevNode->SetNextNode(pNextNode);
+			
 		}
 
 		auto SearchNodeByIndex(const unsigned int& uiIndex)
 		{
 			using namespace std;
 			Node<T> *pCurrentNode = m_pHead; //temp Node<T> *
-			Node<T> *pPrevNode = m_pHead;
-			while (pCurrentNode != m_pTail)
+			Node<T> *pPrevNode = nullptr;
+			Node<T> *pNextNode = pCurrentNode->GetNextNode();
+			for (unsigned int i = 1; i <= uiIndex + 1; i++)
 			{
-				
-				Node<T> *pNextNode = pCurrentNode->GetNextNode();
-				if (pCurrentNode->GetNodeIndex() == uiIndex)
-					return tuple<Node<T>*, Node<T>*, Node<T>*>(pPrevNode, pCurrentNode, pNextNode);//finding succeed
-				else
+				if (i == (uiIndex - 1)) // prev node 
 				{
 					pPrevNode = pCurrentNode;
-					pCurrentNode = pNextNode;
-					if (pCurrentNode == nullptr)//when last one
-					{
-						return tuple<Node<T>*, Node<T>*, Node<T>*>(nullptr, nullptr, nullptr);
-					}
+					pCurrentNode = pCurrentNode->GetNextNode();
+					continue;
 				}
+				if (i == uiIndex) // current node
+				{
+					pNextNode = pCurrentNode->GetNextNode();
+					return tuple<Node<T>*, Node<T>*, Node<T>*>(pPrevNode, pCurrentNode, pNextNode);//finding succeed
+				}
+				pPrevNode = pCurrentNode;
+				pCurrentNode = pCurrentNode->GetNextNode();
 			}
-			return tuple<Node<T>*, Node<T>*, Node<T>*>(nullptr, nullptr, nullptr);
 		}
 	
 
