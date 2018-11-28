@@ -14,7 +14,8 @@ int main()
 		list.push_back(i);
 	}
 */
-	SingleLinked::MyLinkedList<string> list;
+	//SingleLinked::MyLinkedList<string> list;
+	DoubleLinked::MyLinkedList<string> list;
 	list.push_back("Apple");
 	list.push_back("Cherry");
 	list.push_back("Banana");
@@ -26,7 +27,7 @@ int main()
 	//list.display_dataTable();
 	cout << endl;
 	cout << endl;
-	list.del(3);
+	list.del(1);
 	cout << endl;
 	cout << endl;
 	list.display_nodeView();
