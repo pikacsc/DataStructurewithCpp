@@ -15,7 +15,8 @@ int main()
 	}
 */
 	//SingleLinked::MyLinkedList<string> list;
-	DoubleLinked::MyLinkedList<string> list;
+	//DoubleLinked::MyLinkedList<string> list;
+	CircularLinked::MyLinkedList<string> list;
 	list.push_back("Apple");
 	list.push_back("Cherry");
 	list.push_back("Banana");
