@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Queue", "Queue\Queue.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Deque", "Deque\Deque.vcxproj", "{4F2DE9A0-0C1C-482E-8ACA-3D4A435FE8AD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryTree", "BinaryTree\BinaryTree.vcxproj", "{CF7E7777-409A-4132-9566-726A412A2869}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -48,6 +50,14 @@ Global
 		{4F2DE9A0-0C1C-482E-8ACA-3D4A435FE8AD}.Release|x64.Build.0 = Release|x64
 		{4F2DE9A0-0C1C-482E-8ACA-3D4A435FE8AD}.Release|x86.ActiveCfg = Release|Win32
 		{4F2DE9A0-0C1C-482E-8ACA-3D4A435FE8AD}.Release|x86.Build.0 = Release|Win32
+		{CF7E7777-409A-4132-9566-726A412A2869}.Debug|x64.ActiveCfg = Debug|x64
+		{CF7E7777-409A-4132-9566-726A412A2869}.Debug|x64.Build.0 = Debug|x64
+		{CF7E7777-409A-4132-9566-726A412A2869}.Debug|x86.ActiveCfg = Debug|Win32
+		{CF7E7777-409A-4132-9566-726A412A2869}.Debug|x86.Build.0 = Debug|Win32
+		{CF7E7777-409A-4132-9566-726A412A2869}.Release|x64.ActiveCfg = Release|x64
+		{CF7E7777-409A-4132-9566-726A412A2869}.Release|x64.Build.0 = Release|x64
+		{CF7E7777-409A-4132-9566-726A412A2869}.Release|x86.ActiveCfg = Release|Win32
+		{CF7E7777-409A-4132-9566-726A412A2869}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
