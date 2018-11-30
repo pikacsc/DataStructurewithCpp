@@ -21,6 +21,7 @@ Delete first element
 
 #include <iostream>
 #include "MyDeque.h"
+#include "Deque.h"
 #include <string>
 
 using namespace std;
@@ -73,6 +74,33 @@ int main()
 	deque.display();
 	cout << endl;
 
+
+	////linked list based Deque example
+	////http://wondy1128.tistory.com/179
+	//{
+	//	exam_1::Deque * DQ = new exam_1::Deque;
+	//	for (int i = 1; i < 5; i++) {
+	//		DQ->push_front(i);
+	//	}
+	//	while (!DQ->empty()) {
+	//		printf("%d\n", DQ->front());
+	//		DQ->pop_front();
+	//	}
+	//	for (int i = 1; i < 5; i++) {
+	//		DQ->push_back(-i);
+	//	}
+
+	//	while (!DQ->empty()) {
+	//		printf("%d\n", DQ->back());
+	//		DQ->pop_back();
+	//	}
+	//	for (int i = 1; i < 10; i++) {
+	//		DQ->push_back(-i);
+	//	}
+	//	delete DQ;
+	//}
+	//
+	
 
 	return 0;
 }
