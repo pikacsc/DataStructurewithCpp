@@ -44,11 +44,19 @@ print all data
 #include "CStackArray.h"
 
 
+//Memory Leak Check
+#define _CRTDBG_MAP_ALLOC 
+#include <stdlib.h> 
+#include <crtdbg.h>  
+
 int main()
 {
 	using namespace std;
-	CStackArray<string, 10> my_stack;
-	//MyStack<string, 5> my_stack;
+	//_CrtSetBreakAlloc(164);
+
+
+	//CStackArray<string, 10> my_stack;
+	MyStack<string, 5> my_stack;
 	cout << "box numbers are assigned by first-come." << endl;
 	cout << "initial data" << endl;
 	my_stack.push("[ 1.box ]");
@@ -63,13 +71,27 @@ int main()
 	my_stack.peek();
 	cout << endl;
 	
-	string popData = my_stack.pop();
-	cout << "pop(), take top data away (Last In First Out) "<< popData << endl << endl;
+
+
+	//bad coding, memory leak
+	//string temp = my_stack.pop();  
+	//cout << "pop(), take top data away (Last In First Out) " << temp << endl << endl;
+
+	
+	cout << "pop(), take top data away (Last In First Out) "<< my_stack.pop() << endl << endl;
 
 	cout << "stack count : " << my_stack.size() << endl;
 	my_stack.print();
 	cout << endl;
 	cout << endl;
+
+	cout << "pop(), take top data away (Last In First Out) " << my_stack.pop() << endl << endl;
+
+	cout << "stack count : " << my_stack.size() << endl;
+	my_stack.print();
+	cout << endl;
+	cout << endl;
+
 
 
 	my_stack.push("[ 5.box ]");
@@ -99,10 +121,7 @@ int main()
 	cout << endl;
 
 
-	my_stack.del();
-	my_stack.del();
-	my_stack.del();
-	my_stack.del();
+	my_stack.clear();
 	cout << "after delete all" << endl;
 	cout << "stack count : " << my_stack.size() << endl;
 	my_stack.print();
@@ -136,6 +155,11 @@ int main()
 		cout << stringStack.pop() << endl;
 	}*/
 
+
+	my_stack.~MyStack();
+	_CrtDumpMemoryLeaks(); //To check memory leak
+
 	return 0;
 }
 
+ 
