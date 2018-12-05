@@ -24,6 +24,12 @@ Delete first element
 #include "Deque.h"
 #include <string>
 
+
+//Memory Leak Check
+#define _CRTDBG_MAP_ALLOC 
+#include <stdlib.h> 
+#include <crtdbg.h>  
+
 using namespace std;
 
 int main()
@@ -100,7 +106,9 @@ int main()
 	//	delete DQ;
 	//}
 	//
-	
+
+	deque.~Deque();
+	_CrtDumpMemoryLeaks();
 
 	return 0;
 }

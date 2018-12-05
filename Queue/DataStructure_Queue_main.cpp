@@ -30,12 +30,22 @@ Removes the "oldest" element then next first come element will be "oldest"
 #include "MyQueue.h"
 #include "CircleQueue.h"
 #include <string>
+
+
+
+//Memory Leak Check
+#define _CRTDBG_MAP_ALLOC 
+#include <stdlib.h> 
+#include <crtdbg.h>  
+
+
+
 using namespace std;
 
 int main()
 {
 	//Demo code for circle queue
-	{
+	/*{
 		PROGRAMIZ::CircleQueue<string, 5> q;
 		q.enQueue("Apple");
 		q.enQueue("Banana");
@@ -81,10 +91,10 @@ int main()
 		cout << "Delete rear element " << q.deQueueRear() << endl;
 		q.display();
 		cout << endl;
-	}
+	}*/
 
 
-	/*MyQueue<string, 6> queue;
+	MyQueue<string, 6> queue;
 	queue.push("[ 1.box ]");
 	queue.push("[ 2.box ]");
 	queue.push("[ 3.box ]");
@@ -135,7 +145,7 @@ int main()
 	cout << "data count : " << queue.size() << endl;
 	cout << "front(oldest one) : " << queue.front() << endl;
 	cout << "back(newest one)  : " << queue.back() << endl;
-	cout << endl;*/
+	cout << endl;
 
 	/*old demo code
 	queue.pop();
@@ -210,6 +220,8 @@ int main()
 	cout << endl;
 	cout << endl;*/
 
-
+	queue.~MyQueue();
+	_CrtDumpMemoryLeaks(); //To check memory leak
+	
 	return 0;
 }

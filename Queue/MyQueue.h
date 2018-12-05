@@ -44,8 +44,7 @@ public:
 
 	~MyQueue()
 	{
-		delete[] m_tDataArr;
-		m_tDataArr = nullptr;
+		clear();
 	}
 
 private:
@@ -105,6 +104,12 @@ public:
 		}
 		m_uiNextElementIndex++;
 		return returnData;
+	}
+
+	void clear()
+	{
+		delete[] m_tDataArr;
+		m_tDataArr = nullptr;
 	}
 
 };

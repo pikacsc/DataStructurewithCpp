@@ -3,6 +3,14 @@
 #include <string>
 #include "LinkedList.h"
 #include "MyLinkedList.h"
+
+
+//Memory Leak Check
+#define _CRTDBG_MAP_ALLOC 
+#include <stdlib.h> 
+#include <crtdbg.h>  
+
+
 using namespace std;
 
 int main()
@@ -34,6 +42,9 @@ int main()
 	list.display_nodeView();
 	//list.display_dataTable();
 	
+	list.~MyLinkedList();
+
+	_CrtDumpMemoryLeaks();
 	
 	return 0;
 }
