@@ -33,8 +33,8 @@ using namespace std;
 int main()
 {
 	
-	//MyVector<int> vector;
-	EHLIB::Vector<int> vector;
+	MyVector<int> vector;
+	//EHLIB::Vector<int> vector;
 	vector.push_back(1);
 	vector.push_back(2);
 	vector.push_back(3);
@@ -46,22 +46,9 @@ int main()
 	vector.push_back(9);
 	vector.push_back(10);
 	vector.push_back(11);
-
-
-	cout << vector[0] << endl;
-	cout << vector[1] << endl;
-	cout << vector[2] << endl;
-	cout << vector[3] << endl;
-	cout << vector[4] << endl;
-	cout << vector[5] << endl;
-	cout << vector[6] << endl;
-	cout << vector[7] << endl;
-	cout << vector[8] << endl;
-	cout << vector[9] << endl;
-	cout << vector[10] << endl;
-	cout << vector[11] << endl;
-
-
+	
+	for (unsigned int i = 0; i < vector.size(); i++)
+		cout << vector[i] << endl;
 
 
 	_CrtDumpMemoryLeaks(); //To check memory leak
