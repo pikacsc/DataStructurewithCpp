@@ -21,6 +21,7 @@ http://www.cplusplus.com/reference/vector/vector/
 #include <iostream>
 #include "MyVector.h"
 #include "Vector.h"
+#include <vector>
 
 //Memory Leak Check
 #define _CRTDBG_MAP_ALLOC 
@@ -32,7 +33,7 @@ using namespace std;
 
 int main()
 {
-	
+	//vector<int> vector;
 	MyVector<int> vector;
 	//EHLIB::Vector<int> vector;
 	vector.push_back(1);
@@ -46,9 +47,16 @@ int main()
 	vector.push_back(9);
 	vector.push_back(10);
 	vector.push_back(11);
-	
+	vector.clear();
+
+	vector.push_back(11);
+	vector.push_back(2);
+	vector.push_back(3);
+	vector.push_back(5);
+
 	for (unsigned int i = 0; i < vector.size(); i++)
 		cout << vector[i] << endl;
+
 
 
 	_CrtDumpMemoryLeaks(); //To check memory leak

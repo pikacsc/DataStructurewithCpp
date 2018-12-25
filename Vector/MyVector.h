@@ -1,3 +1,4 @@
+// Copyright (c) 2018 JasonChoi
 
 #pragma once
 #include <assert.h>
@@ -23,13 +24,13 @@ public:
 	}
 
 
-	T& operator [] (const unsigned int index) const
+	T& operator [] (const unsigned int &index) const
 	{
+		//expression : vector subscript out of range
 		if (index > mSize)
-			assert(false);
+			assert(false);//Assertion faild, abort() has been called
 		return mDataArr[index];
 	}
-
 
 	//insert data at back of last element;
 	void push_back(const T& data)
@@ -60,7 +61,8 @@ public:
 
 	void resize(const unsigned int &newSize, const T& data = 0)
 	{
-		assert(newSize < mCapacity);
+		if (newSize > mCapacity)
+			assert(false);
 		if (newSize < mSize)
 			mSize = newSize;
 		else
@@ -70,9 +72,7 @@ public:
 		}
 	}
 
-
-
-
+	
 	unsigned int capacity()
 	{
 		return mCapacity;
@@ -88,6 +88,14 @@ public:
 		return mSize;
 	}
 
+	//delete all elements, but memory(capacity) still remain
+	void clear()
+	{
+		mSize = 0;
+	}
+
+
+	
 
 
 };
